@@ -1,15 +1,12 @@
 my_input = int(input('Введите число: '))
-# int(my_input)
-#print(my_input)
 pare = []
-for i in range(1, 11):
-    for j in range(1, 11):
+for i in range(1, my_input):
+    for j in range(i+1, my_input):
         a = i + j
-        if my_input % a == 0 and i <= my_input and j <= my_input:
+        if  my_input % a == 0:
             pare.append(f'{i}{j}')
-            result = set(pare)
-            print(pare)
-
+            result = (''.join(pare))
+print(f'{my_input} - {result}')
 
 
 
