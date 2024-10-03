@@ -43,6 +43,15 @@ class UrTube:
         else:
             self.users.append(new_user)
             self.current_user = new_user
+    def add(self, *new_video):
+        for new_video in self.videos:
+            if self.title == new_video.title:
+                pass
+            else:
+                self.videos.append(new_video)
+
+
+
 
 
 
@@ -50,5 +59,8 @@ class UrTube:
 if __name__ == '__main__':
     user1 = User('Anton', '12345qwe', 53)
     print(user1, user1.password)
+    ur = UrTube()
     v1 = Video('Лучший язык программирования 2024 года', 200)
     v2 = Video('Для чего девушкам парень программист?', 10, adult_mode=True)
+
+    ur.add(v1, v2)
