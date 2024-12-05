@@ -1,14 +1,14 @@
 class Figure:
-    __sides = []
-    __color = []
-    filled= False
+    sides_count = 0
 
-    def __init__(self, rgb, *sides):
-        self.color = list(rgb)
-        self.sides = sides
-        self.filled = True
+
+    def __init__(self, color, *sides):
+        self.__color = color
+        self.__sides = sides
+        self.filled = False
 
     def get_color(self):
+        return self.__color
 
 
     def __is_valid_color(self, r, g, b):
