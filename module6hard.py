@@ -39,7 +39,7 @@ class Figure:
 
 
     def get_sides(self):
-        return self.__sides
+        return list(self.__sides)
 
     def __len__(self):
         return sum( self.__sides)
@@ -49,6 +49,7 @@ class Figure:
             self.__sides = list(new_sides)
         else:
             pass
+
 class Circle(Figure):
     sides_count = 1
 
@@ -77,12 +78,17 @@ class Triangle(Figure):
 
 class Cube(Figure):
     sides_count = 12
-    def init(self, color, *sides):
+
+    def __init__(self, color, *sides):
         if len(sides) == 1:
-            self.__sides = [sides[0]] * 12
+            cube_sides = [sides[0]] * 12  # создаем переменную
         else:
-            self.__sides =[1] * sides_count
-        super().init(color, *sides)
+            cube_sides = [1] * self.sides_count  # создаем переменную
+        super().__init__(color, *cube_sides)
+
+    def get_volume(self):
+        volume = self.get_sides()[0] ** 3
+        return volume
 
 
 
@@ -95,29 +101,26 @@ class Cube(Figure):
 
 
 
-# circle1 = Circle((200, 200, 100), 10) # (Цвет, стороны)
-cube1 = Cube((222, 35, 130), 6, 9)
-print(cube1.get_sides())
-# triangle1 = Triangle((200, 200, 100), 3, 4, 5)
-# print(triangle1.get_square())
+circle1 = Circle((200, 200, 100), 10) # (Цвет, стороны)
+cube1 = Cube((222, 35, 130), 6)
 
 # Проверка на изменение цветов:
-# circle1.set_color(55, 66, 77) # Изменится
-# cube1.set_color(300, 70, 15) # Не изменится
-# print(cube1.get_color())
+circle1.set_color(55, 66, 77) # Изменится
+print(circle1.get_color())
+cube1.set_color(300, 70, 15) # Не изменится
+print(cube1.get_color())
 
 # Проверка на изменение сторон:
-# cube1.set_sides(5, 3, 12, 4, 5) # Не изменится
-# print(cube1.get_sides())
-# circle1.set_sides(15) # Изменится
-# print(circle1.get_sides())
-#
-# # Проверка периметра (круга), это и есть длина:
-# print(len(circle1))
-#
-# # Проверка объёма (куба):
-# print(cube1.get_volume())
+cube1.set_sides(5, 3, 12, 4, 5) # Не изменится
+print(cube1.get_sides())
+circle1.set_sides(15) # Изменится
+print(circle1.get_sides())
 
+# Проверка периметра (круга), это и есть длина:
+print(len(circle1))
+
+# Проверка объёма (куба):
+print(cube1.get_volume())
 
 
 
